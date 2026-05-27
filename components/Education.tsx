@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { portfolioData } from '@/data/portfolio';
+import { ChevronRight } from './Icons';
 
 export default function Education() {
   const [ref, inView] = useInView({
@@ -20,15 +21,15 @@ export default function Education() {
   ];
 
   return (
-    <section id="education" className="py-20 bg-gradient-to-br from-rose-50/50 to-pink-50/50">
+    <section id="education" className="py-14 sm:py-20 bg-gradient-to-br from-rose-50/50 to-pink-50/50">
       <div ref={ref} className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-10 sm:mb-16"
         >
-          <h2 className="text-4xl font-bold mb-4">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4">
             <span className="gradient-text">Học vấn</span>
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-pink-400 to-rose-400 mx-auto rounded-full" />
@@ -45,12 +46,12 @@ export default function Education() {
                 initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
                 animate={inView ? { opacity: 1, x: 0 } : {}}
                 transition={{ duration: 0.6, delay: 0.2 + index * 0.2 }}
-                className={`relative mb-12 md:mb-16 ${
+                className={`relative mb-10 md:mb-16 ${
                   index % 2 === 0 ? 'md:pr-1/2 md:text-right' : 'md:pl-1/2 md:ml-auto'
                 }`}
               >
                 <div
-                  className={`relative z-10 bg-white rounded-2xl shadow-xl p-6 md:p-8 ml-16 md:ml-0 ${
+                  className={`relative z-10 bg-white rounded-2xl shadow-xl p-5 sm:p-6 md:p-8 ml-12 sm:ml-16 md:ml-0 ${
                     index % 2 === 0 ? 'md:mr-12' : 'md:ml-12'
                   } card-hover`}
                 >
@@ -58,8 +59,8 @@ export default function Education() {
                   <div
                     className={`absolute top-8 ${
                       index % 2 === 0
-                        ? 'left-[-2.6rem] md:left-[-2.15rem]'
-                        : 'left-[-2.6rem] md:right-[-2.15rem] md:left-auto'
+                        ? 'left-[-2.1rem] sm:left-[-2.6rem] md:left-[-2.15rem]'
+                        : 'left-[-2.1rem] sm:left-[-2.6rem] md:right-[-2.15rem] md:left-auto'
                     } w-5 h-5 rounded-full bg-gradient-to-r ${gradients[index % gradients.length]} ring-4 ring-white`}
                   />
 
@@ -67,10 +68,10 @@ export default function Education() {
                     {edu.period}
                   </div>
 
-                  <h3 className="text-2xl font-bold text-gray-800 mb-2">
+                  <h3 className="text-xl sm:text-2xl font-bold text-gray-800 mb-2">
                     {edu.school}
                   </h3>
-                  <p className="text-lg text-rose-500 font-semibold mb-2">
+                  <p className="text-base sm:text-lg text-rose-500 font-semibold mb-2">
                     {edu.degree} - {edu.major}
                   </p>
                   <p className="text-gray-600 mb-4">
@@ -85,7 +86,7 @@ export default function Education() {
                       <ul className="text-sm text-gray-600 space-y-1">
                         {edu.activities.map((activity, actIndex) => (
                           <li key={actIndex} className="flex items-start">
-                            <span className="text-rose-400 mr-2">•</span>
+                            <ChevronRight className="w-4 h-4 text-rose-400 mr-2 mt-0.5 flex-shrink-0" />
                             <span>{activity}</span>
                           </li>
                         ))}
